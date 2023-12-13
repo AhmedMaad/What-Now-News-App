@@ -31,16 +31,34 @@
 
         <TextView
             android:id="@+id/article_text"
+            style="@style/TVStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:fontFamily="@font/amita_bold"
-            android:textColor="@color/white"
-            android:textSize="18sp"
+            android:maxLength="28"
             app:layout_constraintBottom_toBottomOf="@id/shadow_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/shadow_view"
             tools:text="@tools:sample/full_names" />
+
+        <TextView
+            style="@style/TVStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            app:layout_constraintBottom_toBottomOf="@id/article_text"
+            app:layout_constraintStart_toEndOf="@id/article_text" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/share_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
