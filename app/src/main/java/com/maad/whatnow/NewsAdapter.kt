@@ -9,6 +9,7 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.maad.whatnow.databinding.ArticleListItemBinding
 
 class NewsAdapter(
@@ -33,6 +34,7 @@ class NewsAdapter(
             .with(holder.binding.articleImage.context)
             .load(articles[position].urlToImage)
             .error(R.drawable.broken_image)
+	    .transition(DrawableTransitionOptions.withCrossFade(1000))
             .into(holder.binding.articleImage)
 
         holder.binding.articleContainer.setOnClickListener {

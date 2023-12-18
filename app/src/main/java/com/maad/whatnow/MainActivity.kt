@@ -1,11 +1,8 @@
 package com.maad.whatnow
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.app.ShareCompat
-import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import com.maad.whatnow.databinding.ActivityMainBinding
 import retrofit2.Call
@@ -39,7 +36,12 @@ class MainActivity : AppCompatActivity() {
         c.getNews().enqueue(object : Callback<News> {
             override fun onResponse(call: Call<News>, response: Response<News>) {
                 val articles = response.body()?.articles!!
-                Log.d("trace", "Data: $articles")
+
+                articles.removeAll{
+                    it.title == "[Removed]"
+                }
+
+                //Log.d("trace", "Data: $articles")
                 showNews(articles)
                 binding.progress.isVisible = false
                 binding.swipeRefresh.isRefreshing = false
